@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102038"/>
+      <stop offset="100%" stop-color="#070b1a"/>
+    </linearGradient>
+    <linearGradient id="highlight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0feffd"/>
+      <stop offset="100%" stop-color="#aa00ff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#0feffd" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0feffd" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#bg)"/>
+  
+  <!-- AI assistant visualization -->
+  <g transform="translate(300, 160)">
+    <!-- Center core -->
+    <circle cx="0" cy="0" r="50" fill="url(#glow)"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="url(#highlight)" stroke-width="2"/>
+    
+    <!-- Orbiting particles -->
+    <g>
+      <circle cx="0" cy="-60" r="5" fill="#0feffd" opacity="0.8"/>
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0 0 0"
+        to="360 0 0"
+        dur="6s"
+        repeatCount="indefinite"/>
+    </g>
+    
+    <g>
+      <circle cx="0" cy="-75" r="3" fill="#aa00ff" opacity="0.8"/>
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="90 0 0"
+        to="450 0 0"
+        dur="8s"
+        repeatCount="indefinite"/>
+    </g>
+    
+    <g>
+      <circle cx="0" cy="-45" r="4" fill="#0feffd" opacity="0.8"/>
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="180 0 0"
+        to="540 0 0"
+        dur="5s"
+        repeatCount="indefinite"/>
+    </g>
+    
+    <!-- Sound wave visualization -->
+    <path d="M-80,0 Q-70,-20 -60,0 Q-50,20 -40,0 Q-30,-15 -20,0" fill="none" stroke="#0feffd" stroke-width="1.5">
+      <animate attributeName="d" 
+               values="M-80,0 Q-70,-20 -60,0 Q-50,20 -40,0 Q-30,-15 -20,0;
+                      M-80,0 Q-70,-10 -60,0 Q-50,10 -40,0 Q-30,-5 -20,0;
+                      M-80,0 Q-70,-25 -60,0 Q-50,25 -40,0 Q-30,-20 -20,0;
+                      M-80,0 Q-70,-20 -60,0 Q-50,20 -40,0 Q-30,-15 -20,0" 
+               dur="3s" 
+               repeatCount="indefinite"/>
+    </path>
+    
+    <path d="M20,0 Q30,-15 40,0 Q50,15 60,0 Q70,-20 80,0" fill="none" stroke="#0feffd" stroke-width="1.5">
+      <animate attributeName="d" 
+               values="M20,0 Q30,-15 40,0 Q50,15 60,0 Q70,-20 80,0;
+                      M20,0 Q30,-5 40,0 Q50,5 60,0 Q70,-10 80,0;
+                      M20,0 Q30,-25 40,0 Q50,25 60,0 Q70,-15 80,0;
+                      M20,0 Q30,-15 40,0 Q50,15 60,0 Q70,-20 80,0" 
+               dur="2.5s" 
+               repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Chat interface -->
+  <g transform="translate(150, 100)">
+    <rect x="0" y="0" width="80" height="30" rx="15" fill="rgba(15, 239, 253, 0.1)" stroke="#0feffd" stroke-width="1"/>
+    <text x="15" y="20" fill="#e0f7ff" font-family="Arial" font-size="12">Hello</text>
+    
+    <rect x="-20" y="40" width="120" height="30" rx="15" fill="rgba(15, 239, 253, 0.1)" stroke="#0feffd" stroke-width="1"/>
+    <text x="10" y="60" fill="#e0f7ff" font-family="Arial" font-size="12">How can I help?</text>
+    
+    <rect x="-30" y="80" width="140" height="30" rx="15" fill="rgba(15, 239, 253, 0.1)" stroke="#0feffd" stroke-width="1"/>
+    <text x="10" y="100" fill="#e0f7ff" font-family="Arial" font-size="12">Processing query...</text>
+  </g>
+  
+  <!-- NLP visualization -->
+  <g transform="translate(435, 130)">
+    <rect x="0" y="0" width="120" height="120" fill="none" stroke="#0feffd" stroke-width="1" rx="5"/>
+    <text x="20" y="25" fill="#0feffd" font-family="monospace" font-size="12">NLP ENGINE</text>
+    
+    <!-- Tokens -->
+    <rect x="15" y="40" width="40" height="15" fill="rgba(15, 239, 253, 0.2)" stroke="#0feffd" stroke-width="0.5" rx="2"/>
+    <text x="25" y="51" fill="#e0f7ff" font-family="monospace" font-size="8">TOKEN</text>
+    
+    <rect x="65" y="40" width="40" height="15" fill="rgba(15, 239, 253, 0.2)" stroke="#0feffd" stroke-width="0.5" rx="2"/>
+    <text x="75" y="51" fill="#e0f7ff" font-family="monospace" font-size="8">TOKEN</text>
+    
+    <rect x="15" y="65" width="40" height="15" fill="rgba(15, 239, 253, 0.2)" stroke="#0feffd" stroke-width="0.5" rx="2"/>
+    <text x="25" y="76" fill="#e0f7ff" font-family="monospace" font-size="8">TOKEN</text>
+    
+    <rect x="65" y="65" width="40" height="15" fill="rgba(170, 0, 255, 0.2)" stroke="#aa00ff" stroke-width="0.5" rx="2"/>
+    <text x="75" y="76" fill="#e0f7ff" font-family="monospace" font-size="8">TOKEN</text>
+    
+    <rect x="40" y="90" width="40" height="15" fill="rgba(170, 0, 255, 0.2)" stroke="#aa00ff" stroke-width="0.5" rx="2"/>
+    <text x="50" y="101" fill="#e0f7ff" font-family="monospace" font-size="8">TOKEN</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="215" y="340" fill="#e0f7ff" font-family="Arial" font-size="20" font-weight="bold">AI ASSISTANT</text>
+  <text x="170" y="365" fill="#8c9eff" font-family="Arial" font-size="12">VOICE-CONTROLLED NLP SYSTEM</text>
+</svg> 
