@@ -197,7 +197,9 @@ Give a ⭐️ if you like this project!
 ## 📸 Screenshots
 
 ### Desktop View
-![Desktop View](img/hologram.png)
+<img width="1342" height="632" alt="image" src="https://github.com/user-attachments/assets/505c5e7b-7eb5-4aeb-b460-6844748b79b7" />
+<img width="1349" height="638" alt="image" src="https://github.com/user-attachments/assets/d05e61ff-341d-46e3-a4ee-09e22fb04fd2" />
+
 
 ### Mobile View
 Fully responsive design optimized for all screen sizes.
