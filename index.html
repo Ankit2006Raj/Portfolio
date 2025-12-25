@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="description" content="Md Saif Ali - Web Developer and AI/ML Student Portfolio">
+    <meta name="theme-color" content="#070b1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Cache control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Performance optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Resource hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <title>Ankit Raj</title>
+    
+    <!-- Critical CSS inline for faster first paint -->
+    <style>
+        :root {
+            /* Sky-blue themed palette */
+            --primary-color: #00aaff; /* main sky blue */
+            --secondary-color: #0077cc; /* deeper sky */
+            --accent-color: #7be8ff; /* light cyan accent */
+            --bg-color: #071028; /* deep navy for contrast */
+            --dark-bg: #021025; /* darker base for overlays */
+            --text-color: #eaf6ff; /* pale sky text */
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            overflow-x: hidden;
+        }
+        /* Fix for all links to ensure they are clickable */
+        a, .nav-item, .project-link, .social-link, .skill-link {
+            position: relative;
+            z-index: 10;
+        }
+        /* Make all decorative overlays ignore pointer events */
+        .digital-rain-container, .stars-container, .warp-lines, .noise-overlay, .scanline {
+            pointer-events: none !important;
+        }
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        /* Ensure loading screen is always visible initially */
+        html.loading,
+        body.loading {
+            overflow: hidden !important;
+            height: 100vh !important;
+            margin: 0;
+            padding: 0;
+        }
+        /* Content should be visible by default for non-JS users */
+        main, header, footer {
+            opacity: 1;
+            visibility: visible;
+        }
+        /* Only hide content for JS users until loaded */
+        .no-js main,
+        .no-js header,
+        .no-js footer {
+            opacity: 0;
+        }
+    </style>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="stylesheet" href="css/style.css?v=4.1">
+    
+    <!-- Font awesome loaded with reduced subset for performance -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Fonts loaded with display=swap for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600&family=Exo+2:wght@400;500;600&family=Quantico:wght@400;700&family=Quicksand:wght@400;500&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    
+    <!-- Immediate JS to remove no-js class and prevent issues with URL fragments -->
+    <script>
+        // Remove no-js class
+        document.documentElement.classList.remove('no-js');
+        
+        // Force scroll to top on page load
+        window.scrollTo(0, 0);
+        
+        // Store initial hash but prevent immediate scrolling
+        window.initialHash = window.location.hash;
+        if (window.initialHash) {
+            history.replaceState(null, null, ' ');
+        }
+        
+        // Enhanced loading screen management with 5 second minimum
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                
+                // Remove loading classes after extended transition
+                setTimeout(() => {
+                    document.documentElement.classList.remove('loading');
+                    document.body.classList.remove('loading');
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 1000); // Extended transition time
+            }
+        }
+        
+        // Force 5 second minimum display time
+        setTimeout(() => {
+            hideLoadingScreen();
+        }, 1000);
+        
+        // Ensure loading screen stays for at least 5 seconds even if page loads faster
+        window.addEventListener('load', () => {
+            // Calculate remaining time to ensure 5 seconds
+            const loadTime = Date.now();
+            const timeSinceStart = loadTime - window.startTime;
+            const remainingTime = Math.max(0, 1000 - timeSinceStart);
+            
+            setTimeout(hideLoadingScreen, remainingTime);
+        });
+        
+        // Store start time for accurate calculation
+        window.startTime = Date.now();
+    </script>
+</head>
+<body class="loading">
+    <div class="noise-overlay"></div>
+    <div class="scanline"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <canvas id="animated-bg-canvas"></canvas>
+    </div>
+    
+ 
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="starfield-loading">
+        <canvas id="starfield-canvas"></canvas>
+        <div class="loading-content">
+            <h2 class="glow-text" data-text="LOADING...">WELCOME TO MY PORTFOLI </h2>
+<div class="loading-text">Building your experience...</div>
+
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <span class="bracket">[</span>
+            <h1>ANKIT RAJ</h1>
+            <span class="bracket">]</span>
+        </div>
+        <nav>
+            <div class="nav-container">
+                <div class="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <!-- Modern controls: dark mode toggle -->
+                <div class="controls">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-item active">HOME</a></li>
+                    <li><a href="#about" class="nav-item">ABOUT</a></li>
+                    <li><a href="#skills" class="nav-item">SKILLS</a></li>
+                    <li><a href="#projects" class="nav-item">PROJECTS</a></li>
+                    <li><a href="#contact" class="nav-item">CONTACT</a></li>
+                </ul>
+                <!-- Overlay for mobile menu background -->
+                <div class="menu-overlay"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Custom cursor for modern feel -->
+    <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+
+    <main>
+            <section id="home" class="hero animated-section">
+                <div class="hero-content">
+                    <h2 class="glitch animated-title" data-text="WELCOME TO THE MY PROTFOLIO">WELCOME TO THE WEB</h2>
+                    <div class="typing-container">
+                        <p>I am <span class="typing"></span></p>
+                    </div>
+                    <p class="hero-description">Crafting innovative digital experiences with code, creativity, and a vision for tomorrow's technology.</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="cta-button animated-cta">View My Work</a>
+                        <a href="#contact" class="cta-button outline animated-cta">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hologram-container animated-hologram">
+                    <div class="hologram"></div>
+                    <div class="hologram-base"></div>
+                </div>
+            </section>
+
+        <section id="about" class="about">
+                <div class="section-header animated-section-header">
+                    <h2 class="glitch animated-title" data-text="ABOUT ME">ABOUT ME</h2>
+                    <div class="separator">
+                        <span></span>
+                        <div class="diamond"></div>
+                        <span></span>
+                    </div>
+                </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img src="img/profile .jpg" alt="ANKIT RAJ" loading="lazy" width="260" height="260">
+                        <div class="frame-corner top-left"></div>
+                        <div class="frame-corner top-right"></div>
+                        <div class="frame-corner bottom-left"></div>
+                        <div class="frame-corner bottom-right"></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-title">biography</div>
+                            <div class="terminal-controls">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="terminal-body">
+                            <p> <span class="typing-about"></span></p>
+                           <p>Hello, I'm <strong>ANKIT RAJ</strong> — a Computer Science student specializing in <strong>Artificial Intelligence</strong> and <strong>Machine Learning</strong>, driven by a passion for transforming innovative ideas into impactful digital solutions. I combine analytical thinking with creative problem-solving to design systems that not only work but inspire.</p>
+
+                            <p>With a strong foundation in computer science and an insatiable curiosity for emerging technologies, I approach every project as an opportunity to experiment, push boundaries, and challenge the status quo. My focus lies in building intelligent systems that are practical, efficient, and future-ready.</p>
+
+                            <p>Outside of academics and development work, I explore the latest AI breakthroughs, contribute to open-source initiatives, and continually expand my skill set — ensuring I stay ahead in this rapidly evolving tech landscape.</p>
+
+                            <p class="cursor">_</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+                <div class="section-header animated-section-header">
+                    <h2 class="glitch animated-title" data-text="TECHNICAL ABILITIES">TECHNICAL ABILITIES</h2>
+                    <div class="separator">
+                        <span></span>
+                        <div class="diamond"></div>
+                        <span></span>
+                    </div>
+                </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item">
+                            <a href="https://www.python.org/" target="_blank" class="skill-link" title="Learn more about Python">
+                                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                                <div class="skill-name">Python</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 85%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://www.java.com/" target="_blank" class="skill-link" title="Learn more about Java">
+                                <div class="skill-icon"><i class="fab fa-java"></i></div>
+                                <div class="skill-name">Java</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 80%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="skill-link" title="Learn more about JavaScript">
+                                <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+                                <div class="skill-name">JavaScript</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 90%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://isocpp.org/" target="_blank" class="skill-link" title="Learn more about C/C++">
+                                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                                <div class="skill-name">C/C++</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 75%"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item">
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-link" title="Learn more about HTML5">
+                                <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                                <div class="skill-name">HTML5</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 95%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="skill-link" title="Learn more about CSS3">
+                                <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                                <div class="skill-name">CSS3</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 90%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://reactjs.org/" target="_blank" class="skill-link" title="Learn more about React">
+                                <div class="skill-icon"><i class="fab fa-react"></i></div>
+                                <div class="skill-name">React</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 85%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://nodejs.org/" target="_blank" class="skill-link" title="Learn more about Node.js">
+                                <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                                <div class="skill-name">Node.js</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 80%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Flask -->
+                        <div class="skill-item">
+                            <a href="https://flask.palletsprojects.com/" target="_blank" class="skill-link" title="Learn more about Flask">
+                                <div class="skill-icon"><i class="fas fa-flask"></i></div>
+                                <div class="skill-name">Flask</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 80%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Django -->
+                        <div class="skill-item">
+                            <a href="https://www.djangoproject.com/" target="_blank" class="skill-link" title="Learn more about Django">
+                                <div class="skill-icon"><i class="fas fa-leaf"></i></div>
+                                <div class="skill-name">Django</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 75%"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item">
+                            <a href="https://git-scm.com/" target="_blank" class="skill-link" title="Learn more about Git">
+                                <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                                <div class="skill-name">Git</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 88%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://www.mysql.com/" target="_blank" class="skill-link" title="Learn more about SQL and NoSQL databases">
+                                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                                <div class="skill-name">SQL / NoSQL</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 82%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://aws.amazon.com/" target="_blank" class="skill-link" title="Learn more about AWS Cloud Services">
+                                <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+                                <div class="skill-name">AWS</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 75%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://www.tensorflow.org/" target="_blank" class="skill-link" title="Learn more about TensorFlow and Machine Learning">
+                                <div class="skill-icon"><i class="fas fa-robot"></i></div>
+                                <div class="skill-name">TensorFlow & ML</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 78%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://scikit-learn.org/" target="_blank" class="skill-link" title="Learn more about Scikit-learn">
+                                <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                                <div class="skill-name">Scikit-learn</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 70%"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="skill-item">
+                            <a href="https://jupyter.org/" target="_blank" class="skill-link" title="Learn more about Jupyter Notebooks">
+                                <div class="skill-icon"><i class="fas fa-book"></i></div>
+                                <div class="skill-name">Jupyter Notebooks</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="--skill-percent: 85%"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+                <div class="section-header animated-section-header">
+                    <h2 class="glitch animated-title" data-text="PROJECT ARCHIVE">PROJECT ARCHIVE</h2>
+                    <div class="separator">
+                        <span></span>
+                        <div class="diamond"></div>
+                        <span></span>
+                    </div>
+                </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/project1.svg" alt="Liveliness Detector" loading="lazy" width="350" height="200">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Liveliness Detector</h3>
+                        <p>Face recognition system that can distinguish between real faces and spoofed ones using computer vision techniques.</p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>OpenCV</span>
+                            <span>Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/project2.svg" alt="Neural Interface" loading="lazy" width="350" height="200">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Neural Interface</h3>
+                        <p>A revolutionary UI system that predicts user behavior and adapts interface elements in real-time.</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>TensorFlow.js</span>
+                            <span>WebGL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/project3.svg" alt="Quantum Simulator" loading="lazy" width="350" height="200">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Quantum Simulator</h3>
+                        <p>Simulation platform for exploring quantum computing concepts through interactive visualizations.</p>
+                        <div class="project-tags">
+                            <span>JavaScript</span>
+                            <span>Three.js</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/project4.svg" alt="AI Assistant" loading="lazy" width="350" height="200">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>AI Assistant</h3>
+                        <p>Voice-controlled AI assistant with advanced natural language processing capabilities.</p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>NLP</span>
+                            <span>TensorFlow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+                <div class="section-header animated-section-header">
+                    <h2 class="glitch animated-title" data-text="ESTABLISH CONNECTION">ESTABLISH CONNECTION</h2>
+                    <p class="connection-subtitle">// NEURAL LINK INTERFACE ACTIVE //</p>
+                    <div class="separator">
+                        <span></span>
+                        <div class="diamond"></div>
+                        <span></span>
+                    </div>
+                </div>
+            
+            <!-- Wave animation container -->
+            <div class="wave-container">
+                <div class="wave wave1"></div>
+                <div class="wave wave2"></div>
+                <div class="wave wave3"></div>
+                <div class="wave wave4"></div>
+            </div>
+
+            <!-- Connection status indicator with pulse effect -->
+            <div class="connection-status">
+                <div class="status-indicator">
+                    <div class="pulse-ring"></div>
+                </div>
+                <span class="status-text">UPLINK READY</span>
+                <div class="connection-lines">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                    <div class="line line3"></div>
+                </div>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <a href="mailto:ankit9905163014@gmail.com" class="info-item-link">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-text">
+                                <h3>Email</h3>
+                                <p>ankit9905163014@gmail.com</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="info-item">
+                        <a href="tel:9905163014" class="info-item-link">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-text">
+                                <h3>Phone</h3>
+                                <p>9905163014</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="info-item">
+                        <a href="https://maps.app.goo.gl/E5uWK75tq5goz9ca7" target="_blank" class="info-item-link">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-text">
+                                <h3>Location</h3>
+                                <p>GAYA( 824115 ), Bihar, India</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://share.google/jEFEjPinHAgZ72dHS" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ankit-raj-226a36309" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/Ankitra72060840?s=09" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ankit_razz_99?igsh=bmFvY3h1dWc3Z3d1" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formsubmit.co/ankit9905163014@gmail.com" method="POST">
+                        <!-- FormSubmit configuration -->
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://saifli786.github.io/Portfolio/index.html#contact?submitted=true">
+                        <input type="hidden" name="_honey" style="display:none">
+                        
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="form-decoration"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="form-decoration"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                            <div class="form-decoration"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                            <div class="form-decoration textarea"></div>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <span>TRANSMIT MESSAGE</span>
+                            <div class="button-decoration"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <center>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="bracket"></span>
+                <h2>ANKIT RAJ</h2>
+                <span class="bracket"></span>
+            </div>
+            <div class="footer-text">
+                <p>&copy; <span id="year"></span> | All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+</center>
+
+    <!-- Defer JS loading and add noscript warning -->
+    <noscript>
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #070b1a; color: #0feffd; display: flex; justify-content: center; align-items: center; z-index: 9999999;">
+            <div style="text-align: center; padding: 20px;">
+                <h2>JavaScript Required</h2>
+                <p>This portfolio requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+            </div>
+        </div>
+    </noscript>
+    
+    <!-- Cache busting with version number -->
+    <script src="js/script.js?v=5.1" defer></script>
+</body>
+</html> 
