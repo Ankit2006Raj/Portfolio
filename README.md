@@ -104,32 +104,6 @@ Portfolio/
    }
    ```
 
-### Add New Projects
-
-Add a new project card in the projects section:
-
-```html
-<div class="project-card">
-    <div class="project-image">
-        <img src="img/your-project.svg" alt="Project Name">
-        <div class="project-overlay">
-            <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="project-info">
-        <h3>Project Name</h3>
-        <p>Project description goes here.</p>
-        <div class="project-tags">
-            <span>Tech1</span>
-            <span>Tech2</span>
-        </div>
-    </div>
-</div>
-```
-
 ## 📱 Browser Support
 
 - ✅ Chrome (latest)
