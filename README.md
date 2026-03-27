@@ -97,14 +97,6 @@ Portfolio/
    - Add your profile photo to `img/profile.jpg`
    - Update project thumbnails in the `img/` folder
 
-3. **Customize Colors** in `css/style.css`:
-   ```css
-   :root {
-     --primary-color: #00aaff;    /* Main sky blue */
-     --secondary-color: #0077cc;  /* Deeper sky */
-     --accent-color: #7be8ff;     /* Light cyan accent */
-     --bg-color: #071028;         /* Deep navy background */
-   }
    ```
 
 ## 📱 Browser Support
